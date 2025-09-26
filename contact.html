@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
+  <base href="./">
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Ambitious Chips — Contact</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,Arial;background:linear-gradient(180deg,#fffaf6,#fff2e0);color:#222}
+    body{font-family:system-ui,Arial;background:linear-gradient(180deg,#fffaf6,#fff2e0);color:#222;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+    body.loaded{opacity:1;transform:none}
     .marquee{background:linear-gradient(90deg,#ff8a00,#ffc85a);padding:8px;color:#111;font-weight:700;text-align:center}
     nav{position:sticky;top:0;background:rgba(0,0,0,0.78);padding:12px;color:#fff;display:flex;justify-content:space-between;align-items:center}
     .container{max-width:960px;margin:18px auto;padding:0 16px}
@@ -20,31 +22,31 @@
   </style>
 </head>
 <body>
-
   <div class="marquee">📬 Let's talk flavors — Wholesale, Events, or Feedback</div>
 
   <nav>
     <div style="display:flex;gap:10px;align-items:center"><div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#ff7a00,#ffd24d);display:flex;align-items:center;justify-content:center">AC</div><strong>Ambitious Chips</strong></div>
     <div style="display:flex;gap:10px">
-      <a style="color:#fff" href="index.html">Home</a>
-      <a style="color:#fff" href="products.html">Products</a>
-      <a style="color:#fff" href="services.html">Services</a>
+      <a style="color:#fff" href="./index.html" target="_blank" rel="noopener noreferrer">Home</a>
+      <a style="color:#fff" href="./products.html" target="_blank" rel="noopener noreferrer">Products</a>
+      <a style="color:#fff" href="./services.html" target="_blank" rel="noopener noreferrer">Services</a>
+      <a style="color:#fff" href="./about.html" target="_blank" rel="noopener noreferrer">About</a>
     </div>
   </nav>
 
   <main class="container">
     <section class="card">
       <h1>Contact Us</h1>
-      <p class="muted">Questions about catering, wholesale, or custom flavors? Drop us a message — we'll get back within 48 hours.</p>
+      <p style="color:#666">Questions about catering, wholesale, or custom flavors? Drop us a message — we'll get back within 48 hours.</p>
 
       <form id="contactForm" novalidate style="margin-top:12px">
         <input id="name" name="name" type="text" placeholder="Your name" required>
         <input id="email" name="email" type="email" placeholder="Email address" required>
-        <input id="subject" name="subject" type="text" placeholder="Subject (e.g., wholesale inquiry)" >
+        <input id="subject" name="subject" type="text" placeholder="Subject (e.g., wholesale inquiry)">
         <textarea id="message" name="message" rows="5" placeholder="Tell us about your event or order..." required></textarea>
-        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px">
           <button type="submit">Send Message</button>
-          <a href="products.html" style="padding:10px 14px;border-radius:8px;background:#fff;border:1px solid #ffd24d;color:#222;text-decoration:none">See Products</a>
+          <a href="./products.html" target="_blank" rel="noopener noreferrer" style="padding:10px 14px;border-radius:8px;background:#fff;border:1px solid #ffd24d;color:#222;text-decoration:none">See Products</a>
         </div>
       </form>
 
@@ -52,7 +54,7 @@
         <strong>Other ways to reach us</strong>
         <div class="socials">
           <a href="#" aria-label="Instagram">📸 Instagram</a>
-          <a href="#" aria-label="Email">✉️ hello@ambitiouschips.example</a>
+          <a href="mailto:hello@ambitiouschips.example" aria-label="Email">✉️ hello@ambitiouschips.example</a>
           <a href="#" aria-label="Phone">📞 +1-555-CHIPS</a>
         </div>
       </div>
@@ -62,12 +64,12 @@
   <footer>© 2025 Ambitious Chips • We reply to messages Mon–Fri</footer>
 
   <script>
-    // simple client-side demo handler — replace with actual form action/server later
+    window.addEventListener('load', ()=> document.body.classList.add('loaded'));
     const form=document.getElementById('contactForm');
-    form.addEventListener('submit', e=>{
+    form.addEventListener('submit', e => {
       e.preventDefault();
       const name=document.getElementById('name').value.trim();
-      if(!name){alert('Please enter your name');return}
+      if(!name){ alert('Please enter your name'); return; }
       alert('Thanks, ' + name + '! Your message was received (demo). We will contact you soon.');
       form.reset();
     });
