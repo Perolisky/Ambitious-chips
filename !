@@ -1,0 +1,38 @@
+<p>AMBITIOUS CHIPS</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Ambitious chips</title>
+</head>
+<body>
+    
+ <!-- Products Section -->
+  <section>
+    <h2>Our Products</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="my1" alt="Cheese Blast Chips">
+        <h3>Cheese Blast</h3>
+        <p>Loaded with cheesy goodness, a bold snack for the bold dreamer.</p>
+      </div>
+      <div class="product-card">
+        <img src="p2.jpg" alt="Spicy Inferno Chips">
+        <h3>Spicy Inferno</h3>
+        <p>Heat up your ambition with our fiery crunch.</p>
+      </div>
+      <div class="product-card">
+        <img src="p4.jpg" alt="Tangy Twist Chips">
+        <h3>Tangy Twist</h3>
+        <p>A zesty burst of flavor to keep your goals fresh.</p>
+      </div>
+      <div class="product-card">
+        <img src="p3.jpg" alt="Classic Crunch Chips">
+        <h3>Classic Crunch</h3>
+        <p>The timeless chip that never lets you down.</p>
+      </div>
+    </div>
+    <a href="https://www.lays.com/product-category/lays" target="_blank" class="cta">Explore More Flavors</a>
+</body>
+</html>

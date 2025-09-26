@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ambitious Chips — About</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,Arial;background:linear-gradient(180deg,#fff8f0,#fff1da);color:#222}
+    .marquee{width:100%;overflow:hidden;background:linear-gradient(90deg,#ff7a00,#ffd24d);color:#fff;padding:8px;font-weight:700}
+    nav{position:sticky;top:0;background:rgba(10,10,10,0.8);display:flex;justify-content:space-between;align-items:center;padding:12px 18px;color:#fff;z-index:50}
+    .logo{width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#ff7a00,#ffd24d);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
+    .nav-links{display:flex;gap:14px}
+    .nav-links a{color:#fff;padding:6px 8px;border-radius:8px}
+    .menu-toggle{display:none;color:#fff}
+    .hero{padding:38px 18px;text-align:center;background:linear-gradient(180deg,#fff7e6,#fff0d1);border-radius:12px;margin:16px}
+    .hero h1{color:#c04400;margin-bottom:8px}
+    .container{max-width:980px;margin:12px auto;padding:0 18px}
+    .story{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:center;margin-bottom:18px}
+    .story img{width:100%;border-radius:12px;animation:zoom 9s ease-in-out infinite}
+    @keyframes zoom{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+    .card{background:linear-gradient(180deg,#fff,#fffef7);padding:16px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+    .values{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .value{padding:14px;border-radius:10px;background:linear-gradient(135deg,#fff7f0,#fff2db)}
+    footer{margin:18px;background:#111;color:#ddd;padding:14px;border-radius:10px;text-align:center}
+    @media(max-width:900px){.story{grid-template-columns:1fr}}
+    @media(max-width:720px){.nav-links{display:none}.menu-toggle{display:block}}
+  </style>
+</head>
+<body>
+
+  <div class="marquee">🎉 Ambitious Chips • Handcrafted flavors • Join our flavor lab!</div>
+
+  <nav>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="logo">AC</div>
+      <strong>Ambitious Chips</strong>
+    </div>
+    <div>
+      <span class="menu-toggle" id="mt">☰</span>
+      <div class="nav-links" id="navlinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>About Ambitious Chips</h1>
+    <p class="muted">From a kitchen test to your snack drawer — our journey is simple: bold flavor, careful craft.</p>
+  </header>
+
+  <main class="container">
+    <div class="story">
+      <div class="card">
+        <h2>Our Story</h2>
+        <p>Ambitious Chips started when our founder reimagined a family snack recipe and decided to make it bolder. We began selling at local markets, iterating flavors based on real feedback. Today we blend playful creativity with food science to craft chips with personality — and personality that performs.</p>
+        <p><strong>We believe snack time is tiny luxury — treat it seriously.</strong></p>
+      </div>
+
+      <img src="team.jpg" alt="Team making chips" />
+    </div>
+
+    <section class="card">
+      <h2>Mission & Vision</h2>
+      <p><strong>Mission:</strong> Fuel everyday ambition by delivering bold, shareable snacks that turn small moments into celebrations.</p>
+      <p><strong>Vision:</strong> To be the snack brand that people think of when they want excitement — from late-night study sessions to rooftop celebrations.</p>
+    </section>
+
+    <section class="card">
+      <h2>Our Values</h2>
+      <div class="values">
+        <div class="value"><strong>Quality</strong><p class="muted">Real ingredients, honest labeling</p></div>
+        <div class="value"><strong>Creativity</strong><p class="muted">Seasoning experiments & seasonal specials</p></div>
+        <div class="value"><strong>Community</strong><p class="muted">Local events & wholesale partnerships</p></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Meet the Lab</h2>
+      <p>Our flavor lab is where magic happens — spice blends, tasting panels, and prototypes that become your favorites.</p>
+      <p class="muted">Want to suggest a flavor? Email our team or join a tasting session listed on the contact page.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 Ambitious Chips • Crunch with purpose</div>
+  </footer>
+
+  <script>
+    const mt=document.getElementById('mt'), nl=document.getElementById('navlinks');
+    mt.addEventListener('click',()=>nl.style.display=(nl.style.display==='flex'?'none':'flex'));
+  </script>
+</body>
+</html>
