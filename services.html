@@ -2,74 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <base href="./">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ambitious Chips — Services</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,Arial;background:linear-gradient(180deg,#fffdf8,#fff5e6);color:#222}
+    body{font-family:system-ui,Arial;background:linear-gradient(180deg,#fffdf8,#fff5e6);color:#222;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+    body.loaded{opacity:1;transform:none}
     .marquee{background:linear-gradient(90deg,#ff8a00,#ffc85a);padding:8px;color:#111;font-weight:700;text-align:center}
     nav{position:sticky;top:0;background:rgba(0,0,0,0.75);padding:12px 16px;color:#fff;display:flex;justify-content:space-between;align-items:center}
-    .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#ff7a00,#ffd24d);display:flex;align-items:center;justify-content:center}
     .nav-links{display:flex;gap:12px}
     .container{max-width:980px;margin:18px auto;padding:0 16px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
     .service{background:linear-gradient(180deg,#fff8f2,#fff0d8);padding:14px;border-radius:12px;box-shadow:0 8px 16px rgba(0,0,0,0.06);transition:transform .25s}
     .service:hover{transform:translateY(-6px)}
-    .service h3{margin-bottom:8px;color:#c04f00}
     .why{margin-top:14px;padding:14px;background:linear-gradient(90deg,#fffaf0,#fff0d9);border-radius:12px}
     footer{margin:18px;padding:12px;background:#111;color:#ddd;text-align:center;border-radius:10px}
-    @media(max-width:720px){nav .nav-links{display:none}}
+    @media(max-width:720px){.nav-links{display:none}}
   </style>
 </head>
 <body>
-
   <div class="marquee">✨ Catering • Wholesale • Custom Flavors • Corporate Gifts ✨</div>
 
   <nav>
-    <div style="display:flex;align-items:center;gap:10px">
-      <div class="logo">AC</div>
-      <strong>Ambitious Chips</strong>
-    </div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="products.html">Products</a>
-      <a href="contact.html">Contact</a>
+    <div style="display:flex;gap:10px;align-items:center"><div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#ff7a00,#ffd24d);display:flex;align-items:center;justify-content:center">AC</div><strong>Ambitious Chips</strong></div>
+    <div class="nav-links" id="navlinks">
+      <a href="./index.html" target="_blank" rel="noopener noreferrer">Home</a>
+      <a href="./about.html" target="_blank" rel="noopener noreferrer">About</a>
+      <a href="./services.html" target="_blank" rel="noopener noreferrer">Services</a>
+      <a href="./products.html" target="_blank" rel="noopener noreferrer">Products</a>
+      <a href="./contact.html" target="_blank" rel="noopener noreferrer">Contact</a>
     </div>
   </nav>
 
   <main class="container">
     <header style="text-align:center;margin-bottom:14px">
       <h1>Our Services</h1>
-      <p class="muted">Flexible options for events, retailers, and flavor fans.</p>
+      <p style="color:#666">Flexible options for events, retailers, and flavor fans.</p>
     </header>
 
     <section class="grid">
-      <article class="service">
-        <h3>🍽️ Catering Packs</h3>
-        <p>Party-sized packs, curated snack boards, and on-site setups for gatherings of all sizes. We deliver fresh, flavorful options that keep guests talking.</p>
-      </article>
-
-      <article class="service">
-        <h3>🏷️ Wholesale & Retail</h3>
-        <p>Competitive wholesale pricing for cafes, stores, and online resellers. Custom packing and co-brand opportunities available.</p>
-      </article>
-
-      <article class="service">
-        <h3>🧪 Custom Flavor Lab</h3>
-        <p>Work with our chef to design a private label or event-only flavor. Minimums apply — ideal for launch events and corporate gifting.</p>
-      </article>
-
-      <article class="service">
-        <h3>📦 Subscription Boxes</h3>
-        <p>Monthly flavor boxes with rotating limited-edition chips, behind-the-scenes notes, and VIP discounts.</p>
-      </article>
+      <article class="service"><h3>🍽️ Catering Packs</h3><p>Party-sized packs, curated snack boards, and on-site setups for gatherings of all sizes.</p></article>
+      <article class="service"><h3>🏷️ Wholesale & Retail</h3><p>Competitive pricing for cafes, shops and online stores — custom packing available.</p></article>
+      <article class="service"><h3>🧪 Custom Flavor Lab</h3><p>Work with our chef to design private-label or event-only flavors.</p></article>
+      <article class="service"><h3>📦 Subscription Boxes</h3><p>Monthly flavor boxes with rotating limited-edition chips and VIP perks.</p></article>
     </section>
 
-    <div class="why card" style="margin-top:18px">
+    <div class="why" style="margin-top:18px">
       <h2>Why Choose Our Services?</h2>
-      <ul style="line-height:1.6;margin-top:8px">
+      <ul style="line-height:1.6;color:#444;margin-top:8px">
         <li>Reliable delivery & flexible minimums</li>
         <li>Chef-driven flavor development</li>
         <li>Eco-aware packaging options</li>
@@ -78,8 +59,8 @@
     </div>
   </main>
 
-  <footer>
-    <div>© 2025 Ambitious Chips — Services that fuel moments</div>
-  </footer>
+  <footer>© 2025 Ambitious Chips — Services that fuel moments</footer>
+
+  <script>window.addEventListener('load', ()=> document.body.classList.add('loaded'))</script>
 </body>
 </html>
