@@ -2,129 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ambitious Chips — Home</title>
   <style>
-    /* ---------- Reset & Base ---------- */
+    /* ---------- Base & page transition ---------- */
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;
       background:linear-gradient(135deg,#ffeed6 0%, #fff3d0 45%, #ffe6b8 100%);
       color:#222;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       overflow-x:hidden;
+      opacity:0;
+      transform:translateY(8px);
+      transition:opacity .5s ease, transform .5s ease;
     }
+    body.loaded{opacity:1;transform:none}
+
     a{color:inherit;text-decoration:none}
 
-    /* ---------- Marquee ---------- */
-    .marquee {
-      width:100%;
-      overflow:hidden;
-      background: linear-gradient(90deg,#ff6a00,#ffcc00,#ff6a00);
-      color:#fff;
-      font-weight:700;
-      padding:8px 10px;
-      white-space:nowrap;
-      box-shadow:0 2px 6px rgba(0,0,0,0.12);
-    }
-    .marquee span {display:inline-block; padding-right:60px; animation:mar 14s linear infinite}
+    /* Marquee */
+    .marquee { width:100%; overflow:hidden; background: linear-gradient(90deg,#ff6a00,#ffcc00,#ff6a00); color:#fff; font-weight:700; padding:8px 10px; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,0.12); }
+    .marquee span { display:inline-block; padding-right:60px; animation:mar 14s linear infinite }
     @keyframes mar{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-    /* ---------- Navbar ---------- */
-    nav{
-      position:sticky;top:0;z-index:999;
-      background:rgba(10,10,10,0.75);
-      backdrop-filter: blur(6px);
-      color:#fff;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:12px 20px;
-    }
+    /* Navbar */
+    nav{position:sticky;top:0;z-index:999;background:rgba(10,10,10,0.75);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo {
-      width:44px;height:44px;border-radius:8px;
-      background:linear-gradient(135deg,#ff7a00,#ffd24d);
-      display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,0.15);
-    }
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#ff7a00,#ffd24d);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.15)}
     .brand h1{font-size:1.05rem;margin-left:6px}
     .nav-links{display:flex;gap:18px;list-style:none}
     .nav-links a{color:#fff;padding:6px 8px;border-radius:6px;transition:all .18s}
-    .nav-links a:hover{background:rgba(255,255,255,0.06); color:#ffd24d}
+    .nav-links a:hover{background:rgba(255,255,255,0.06);color:#ffd24d}
 
     .menu-toggle{display:none;color:#fff;font-size:1.25rem;cursor:pointer}
 
-    /* ---------- Hero (video bg) ---------- */
-    .hero{
-      position:relative;height:72vh;min-height:380px;display:flex;align-items:center;justify-content:center;
-      margin:18px; border-radius:14px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.12);
-      background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.08));
-    }
-    .hero video, .hero img {
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-      filter:brightness(0.75) saturate(1.05);
-    }
-    .hero-overlay{
-      position:relative; z-index:2; text-align:center; color:#fff; padding:22px;
-      background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.35));
-      width:90%;max-width:980px;border-radius:12px;
-      animation:fadeUp .9s ease both;
-    }
-    .hero-overlay h2{font-size:clamp(1.6rem,3.2vw,2.6rem); margin-bottom:6px; letter-spacing:0.6px;}
-    .hero-overlay p{font-size:1rem; opacity:0.95;margin-bottom:14px}
-    .cta{display:inline-block;padding:10px 18px;border-radius:10px;background:linear-gradient(90deg,#ff8a00,#ffd24d);color:#111;font-weight:700;box-shadow:0 8px 18px rgba(255,138,0,0.18)}
+    /* Hero */
+    .hero{position:relative;height:72vh;min-height:360px;display:flex;align-items:center;justify-content:center;margin:18px;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.12);background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.08))}
+    .hero video, .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.78) saturate(1.05)}
+    .hero-overlay{position:relative;z-index:2;text-align:center;color:#fff;padding:22px;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.35));width:90%;max-width:980px;border-radius:12px;animation:fadeUp .9s ease both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    .hero-overlay h2{font-size:clamp(1.6rem,3.2vw,2.6rem);margin-bottom:6px;letter-spacing:.6px}
+    .hero-overlay p{font-size:1rem;opacity:.95;margin-bottom:14px}
+    .cta{display:inline-block;padding:10px 18px;border-radius:10px;background:linear-gradient(90deg,#ff8a00,#ffd24d);color:#111;font-weight:700;box-shadow:0 8px 18px rgba(255,138,0,0.18)}
 
-    /* ---------- Sections ---------- */
+    /* Layout */
     .container{max-width:1100px;margin:20px auto;padding:0 18px}
-    .card{background:linear-gradient(180deg,#fff,#fffbe6);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-bottom:18px}
+    .card{background:linear-gradient(180deg,#fff,#fffbe6);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.06);margin-bottom:18px}
     .two-col{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start}
     .two-col img{width:100%;border-radius:10px;display:block;animation:float 6s ease-in-out infinite}
     @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
-    /* ---------- Products Grid ---------- */
     .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-    .product{
-      background:linear-gradient(180deg,#fffef6,#fff1d6);
-      border-radius:12px;padding:12px;text-align:center;transition:transform .28s, box-shadow .28s;
-      overflow:hidden;position:relative;
-    }
+    .product{background:linear-gradient(180deg,#fffef6,#fff1d6);border-radius:12px;padding:12px;text-align:center;transition:transform .28s,box-shadow .28s;overflow:hidden;position:relative}
     .product img{width:100%;height:160px;object-fit:cover;border-radius:8px;transition:transform .45s,filter .45s;transform-origin:center}
     .product:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.12)}
     .product:hover img{transform:scale(1.06);filter:brightness(1.02)}
     .product h3{margin:10px 0 6px;color:#c04f00}
     .product p{font-size:.95rem;color:#555}
 
-    /* ---------- Footer ---------- */
+    /* Footer */
     footer{margin-top:18px;padding:18px 6px;background:linear-gradient(90deg,#231815,#111);color:#ddd;text-align:center;border-radius:10px;margin:20px}
     .socials{display:flex;gap:10px;justify-content:center;margin-top:8px}
     .socials a{background:rgba(255,255,255,0.06);padding:8px;border-radius:8px;color:#fff}
 
-    /* ---------- Utilities ---------- */
-    .muted{color:#666;font-size:.95rem}
-    .center{text-align:center}
-
-    /* ---------- Responsive ---------- */
+    /* Responsive */
     @media (max-width:900px){ .two-col{grid-template-columns:1fr} }
     @media (max-width:720px){
       .nav-links{display:none}
       .menu-toggle{display:block}
       nav{padding:12px}
     }
-    /* small nav menu when toggled */
     .mobile-menu{display:none;position:absolute;right:12px;top:64px;background:linear-gradient(180deg,#111,#222);padding:12px;border-radius:10px}
     .mobile-menu a{display:block;padding:8px 10px;color:#fff;border-radius:8px;margin-bottom:6px}
     .mobile-menu.show{display:block}
-
   </style>
 </head>
 <body>
 
-  <!-- Top marquee -->
   <div class="marquee"><span>🔥 Ambitious Chips — Crunch into Greatness • New: Tangy Twist • Wholesale • Catering</span></div>
 
-  <!-- Nav -->
   <nav>
     <div class="brand">
       <div class="logo">AC</div>
@@ -133,38 +93,44 @@
 
     <div>
       <span class="menu-toggle" id="toggle">☰</span>
-      <ul class="nav-links">
-        <li><a href="index.html" target="blank">Home</a></li>
-        <li><a href="about.html" target="blank">About</a></li>
-        <li><a href="services.html" target="blank">Services</a></li>
-        <li><a href="products.html" target="blank">Products</a></li>
-        <li><a href="contact.html" target="blank">Contact</a></li>
+
+      <!-- Nav links open in a new tab -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./index.html" target="_blank" rel="noopener noreferrer">Home</a></li>
+        <li><a href="./about.html" target="_blank" rel="noopener noreferrer">About</a></li>
+        <li><a href="./services.html" target="_blank" rel="noopener noreferrer">Services</a></li>
+        <li><a href="./products.html" target="_blank" rel="noopener noreferrer">Products</a></li>
+        <li><a href="./contact.html" target="_blank" rel="noopener noreferrer">Contact</a></li>
       </ul>
- 
-  
+
+      <div id="mobile" class="mobile-menu" aria-hidden="true">
+        <a href="./index.html" target="_blank" rel="noopener noreferrer">Home</a>
+        <a href="./about.html" target="_blank" rel="noopener noreferrer">About</a>
+        <a href="./services.html" target="_blank" rel="noopener noreferrer">Services</a>
+        <a href="./products.html" target="_blank" rel="noopener noreferrer">Products</a>
+        <a href="./contact.html" target="_blank" rel="noopener noreferrer">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero" role="banner" aria-label="Ambitious Chips hero">
-    <!-- Replace hero.mp4 and hero-fallback.jpg with your assets -->
     <video autoplay muted loop playsinline>
-      <source src="pero.mp4" type="video/mp4">
-      <!-- fallback will display below -->
+      <source src="hero.mp4" type="video/mp4">
+      <!-- fallback -->
     </video>
     <img src="hero-fallback.jpg" alt="" style="display:none">
     <div class="hero-overlay">
       <h2>Ambitious Chips — Made for Dreamers & Doers</h2>
       <p>Bold flavor. Unforgettable crunch. Snacks crafted to fuel your hustle and celebrate small wins.</p>
-      <a class="cta" href="products.html">Explore Flavors</a>
+      <a class="cta" href="./products.html" target="_blank" rel="noopener noreferrer">Explore Flavors</a>
     </div>
   </section>
 
-  <!-- Intro / Story -->
   <div class="container">
     <div class="card two-col">
       <div>
         <h2>Our Story</h2>
-        <p class="muted">Born from late-night creativity sessions and family recipes, Ambitious Chips started as a small local brand with a big idea: create snacks that taste as big as ambition.</p>
+        <p style="color:#666">Born from late-night creativity sessions and family recipes, Ambitious Chips started as a small local brand with a big idea: create snacks that taste as big as ambition.</p>
         <p>We source thoughtful ingredients, experiment with bold seasonings, and bake each batch with care. Whether you're powering through a shift, celebrating a win, or sharing a moment with friends — our chips are made to make that moment better.</p>
         <p><strong>Made with care • Shared with pride • Crunch with ambition.</strong></p>
       </div>
@@ -173,37 +139,17 @@
       </div>
     </div>
 
-    <!-- Products highlights -->
     <div class="card">
-      <h2 class="center">Fan Favorites</h2>
+      <h2 style="text-align:center">Fan Favorites</h2>
       <div class="products">
-        <article class="product">
-          <img src="p1.jpg" alt="Cheese Blast chips">
-          <h3>Cheese Blast</h3>
-          <p>Creamy, sharp, and full-bodied cheesy punch — perfect with cold drinks.</p>
-        </article>
-        <article class="product">
-          <img src="p2.jpg" alt="Spicy Inferno chips">
-          <h3>Spicy Inferno</h3>
-          <p>Smoky heat balanced with citrus notes — for anyone who loves fire.</p>
-        </article>
-        <article class="product">
-          <img src="p3.jpg" alt="Tangy Twist chips">
-          <h3>Tangy Twist</h3>
-          <p>Zesty lime and tomato tang for a bright, addictive crunch.</p>
-        </article>
-        <article class="product">
-          <img src="p4.jpg" alt="Classic Crunch chips">
-          <h3>Classic Crunch</h3>
-          <p>The timeless salted chip — lightly seasoned for everyday enjoyment.</p>
-        </article>
+        <article class="product"><img src="p1.jpg" alt="Cheese Blast"><h3>Cheese Blast</h3><p>Creamy, sharp, and full-bodied cheesy punch.</p></article>
+        <article class="product"><img src="p2.jpg" alt="Spicy Inferno"><h3>Spicy Inferno</h3><p>Smoky heat balanced with citrus notes.</p></article>
+        <article class="product"><img src="p3.jpg" alt="Tangy Twist"><h3>Tangy Twist</h3><p>Zesty lime & tomato tang — bright & addictive.</p></article>
+        <article class="product"><img src="p4.jpg" alt="Classic Crunch"><h3>Classic Crunch</h3><p>The timeless salted chip — lightly seasoned for everyday enjoyment.</p></article>
       </div>
-      <div class="center" style="margin-top:14px">
-        <a class="cta" href="products.html">Shop More</a>
-      </div>
+      <div style="text-align:center;margin-top:14px"><a class="cta" href="./products.html" target="_blank" rel="noopener noreferrer">Shop More</a></div>
     </div>
 
-    <!-- Why choose us -->
     <div class="card">
       <h2>Why Choose Ambitious Chips?</h2>
       <ul style="margin-top:10px;line-height:1.6;color:#444">
@@ -215,30 +161,26 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div style="max-width:980px;margin:0 auto">
       <div>© 2025 Ambitious Chips • Made with flavor & ambition</div>
-      <div class="socials" style="margin-top:8px">
-        <a href="#" aria-label="Instagram">📸</a>
-        <a href="#" aria-label="Twitter">🐦</a>
-        <a href="#" aria-label="Facebook">📘</a>
-      </div>
+      <div class="socials" style="margin-top:8px"><a href="#" aria-label="Instagram">📸</a><a href="#" aria-label="Twitter">🐦</a><a href="#" aria-label="Facebook">📘</a></div>
     </div>
   </footer>
 
-  <!-- Bottom marquee -->
   <div class="marquee" style="margin-top:12px"><span>✨ New: Tangy Twist • Book catering • Wholesale pricing • Taste the Ambition ✨</span></div>
 
   <script>
-    // mobile menu toggle
+    // page fade-in
+    window.addEventListener('load', ()=> document.body.classList.add('loaded'));
+
+    // mobile toggle + close on nav click
     const toggle = document.getElementById('toggle');
     const mobile = document.getElementById('mobile');
     toggle.addEventListener('click', ()=> mobile.classList.toggle('show'));
+
+    // close mobile menu when a mobile link is clicked
+    mobile.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> mobile.classList.remove('show')));
   </script>
 </body>
 </html>
-
-
-
-
